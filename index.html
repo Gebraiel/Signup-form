@@ -38,19 +38,23 @@
         <form>
           <div class="input">
             <input type="text" placeholder="First Name"/>
-            <p class="message error"></p>
+            <p class="message"></p>
+            <i class="fa-solid fa-circle-exclamation"></i>
           </div>
           <div class="input">
             <input type="text" placeholder="Last Name" />
-            <p class="message error"></p>
+            <p class="message "></p>
+            <i class="fa-solid fa-circle-exclamation"></i>
           </div>
           <div class="input">
             <input class="email" type="email" placeholder="Email Address" />
-            <p class="message error"></p>
+            <p class="message "></p>
+            <i class="fa-solid fa-circle-exclamation"></i>
           </div>
           <div class="input">
             <input type="password" placeholder="Password" />
-            <p class="message error"></p>
+            <p class="message "></p>
+            <i class="fa-solid fa-circle-exclamation"></i>
           </div>
           <button>
             Claim your free trial 
@@ -70,8 +74,10 @@
         event.preventDefault();
         inputs.forEach(input => {
           if(input.value ===""){
-            input.nextElementSibling.textContent = "This field is required";
+            input.parentElement.classList.add('error');
+            input.nextElementSibling.textContent = input.getAttribute("placeholder")+" is required";
           }else{
+            input.parentElement.classList.remove('error');
             input.nextElementSibling.textContent = "";
           }
         });
@@ -82,8 +88,12 @@
         let email = emailInput.value;
         let regex = /\w{1,}@\w{1,}\.\w{2,4}/ig;
         if (regex.test(email)) {
+          emailInput.parentElement.classList.remove('error');
+
           email.nextElementSibling.textContent = "";
         } else {
+          emailInput.parentElement.classList.add('error');
+
           emailInput.nextElementSibling.textContent = "Please enter valid email";
         }
       }

@@ -91,6 +91,7 @@ input{
   font-weight: 700;
   border-radius:5px;
   padding:15px 20px;
+  transition: 0.3s;
 }
 .input{
   width: 100%;
@@ -129,14 +130,31 @@ small a{
   font-size: 14px;
   font-style: italic;
   margin:5px 0;
-  text-align: left;
+  text-align: right;
 
 }
-.error{
+.error p{
   color: var(--Red);
+}
+.error input{
+  border-color: var(--Red);
 }
 .confirmation{
   color:var(--Green);
+}
+.input{
+  position: relative;
+}
+.input i{
+  display: none;
+  position: absolute;
+  right:20px;
+  top:20%;
+  color:var(--Red);
+}
+.input.error i{
+  display: block;
+
 }
 button:hover{
   opacity: 0.8;
